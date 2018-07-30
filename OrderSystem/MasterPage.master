@@ -1,0 +1,123 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register assembly="DevExpress.Web.Bootstrap.v17.2, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.Bootstrap" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v17.2, Version=17.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+     
+    <link href="/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+   <link href="/Styles/fontawesome/css/all.css" rel="stylesheet" />
+    <link href="/Styles/FormCss.css" rel="stylesheet" />
+  
+   
+    <style>
+        .boxicon {
+          border-style:solid;
+          border-color:navy;
+        }
+        .logo {
+            margin-top:-10px;
+        }
+        #main-body {
+            background: url(/images/backimg.jpg) ;
+            height: 90vh; 
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+           
+}
+    </style>
+    <script type="text/javascript" src="/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/Scripts/popper.min.js"></script>
+    <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+        
+    </asp:ContentPlaceHolder>
+</head>
+<body >
+   <form id="form1" runat="server">
+      
+           <nav class="navbar navbar-expand-lg navbar-dark bg-info text-white">
+              <div class="container">
+              <div class="navbar-header">  
+                  <a class="navbar-brand"> <img class="logo" alt="Brand" src="images/logo.png" width="60" height="40"> </a>
+               <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#menuContainer">
+                    <%--  <span class="navbar-toggler-icon boxicon"></span>--%>
+                  <span class="icon-bar boxicon"></span>
+                  <span class="icon-bar boxicon"></span>
+                  <span class="icon-bar boxicon"></span>
+               </button>
+             
+              </div>
+               <div class="collapse navbar-collapse" id="menuContainer">
+                     <dx:BootstrapMenu runat="server"  AllowSelectItem="True" ShowPopOutImages="True" ID="menu" Width="100%">
+                       <CssClasses Control="mr-auto" />
+                       <SettingsBootstrap NavbarMode="True" />
+                       <Items>
+                           <dx:BootstrapMenuItem Text="Master Table">
+                               <Items>
+                                   <dx:BootstrapMenuItem Text="Item Profile" NavigateUrl="~/Master/ItemProfile.aspx">
+                                   </dx:BootstrapMenuItem>
+                                   <dx:BootstrapMenuItem BeginGroup="True" NavigateUrl="~/Master/CustProfile.aspx" Text="Customer Profile" Target="_parent">
+                                   </dx:BootstrapMenuItem>
+                                   <dx:BootstrapMenuItem NavigateUrl="~/Master/ItemUOMProfile.aspx" Text="UOM">
+                                   </dx:BootstrapMenuItem>
+                                   <dx:BootstrapMenuItem NavigateUrl="~/Master/ItemTypeProfile.aspx" Text="Type">
+                                   </dx:BootstrapMenuItem>
+                                   <dx:BootstrapMenuItem NavigateUrl="~/Master/ItemCategoryProfile.aspx" Text="Category">
+                                   </dx:BootstrapMenuItem>
+                                   <dx:BootstrapMenuItem NavigateUrl="~/Master/ResellerProfile.aspx" Text="Reseller">
+                                   </dx:BootstrapMenuItem>
+                               </Items>
+                           </dx:BootstrapMenuItem>
+                           <dx:BootstrapMenuItem Text="Transactions">
+                               <Items>
+                                   <dx:BootstrapMenuItem NavigateUrl="~/Sales/SalesOrderList.aspx" Text="Sales Order">
+                                   </dx:BootstrapMenuItem>
+                               </Items>
+                           </dx:BootstrapMenuItem>
+                           <dx:BootstrapMenuItem Text="Summary">
+                               <Items>
+                                   <dx:BootstrapMenuItem Text="Daily Order" NavigateUrl="~/DashBoard/DailyOrder.aspx">
+                                   </dx:BootstrapMenuItem>
+                                   <dx:BootstrapMenuItem Text="Sales Order Pivot" NavigateUrl="~/DashBoard/OrderPivot.aspx">
+                                   </dx:BootstrapMenuItem>
+                               </Items>
+                           </dx:BootstrapMenuItem>
+                           <dx:BootstrapMenuItem Text="Admin">
+                               <Items>
+                                   <dx:BootstrapMenuItem NavigateUrl="~/Account/UserAccount.aspx" Text="User Account">
+                                   </dx:BootstrapMenuItem>
+                                   <dx:BootstrapMenuItem Text="Settings" NavigateUrl="~/Master/Settings.aspx">
+                                   </dx:BootstrapMenuItem>
+                                   <dx:BootstrapMenuItem  NavigateUrl="~/Account/CustAccount.aspx" Text="Customer Account">
+                                   </dx:BootstrapMenuItem>
+                               </Items>
+                           </dx:BootstrapMenuItem>
+                           <dx:BootstrapMenuItem Text="Logout" NavigateUrl="~/logOut.aspx">
+                           </dx:BootstrapMenuItem>
+                       </Items>
+                   </dx:BootstrapMenu>
+               </div>
+            </div>
+           </nav>
+
+       
+        <div class="container-fluid">
+           <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+           </asp:ContentPlaceHolder>
+
+       </div>
+       
+   </form>
+</body>
+</html>
